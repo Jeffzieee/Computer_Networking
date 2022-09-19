@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int main(){
+void main(){
     printf("Stop and Wait Protocol ");
     int i=0,j=0,x,x1=10,x2,window_size;
     printf("\nEnter the window size : ");
@@ -14,7 +14,7 @@ int main(){
         x=rand()%10;
         if(x%2==0) {
             for (x2 = 1; x2 < 2; x2++) {
-                printf("\nWaiting for %d seconds...",x2);
+                printf("\nWaiting for %d seconds...",&x2);
                 sleep(x2);
                 printf("\nNo Acknowledgement yet...");
             }
@@ -28,5 +28,4 @@ int main(){
         j++;
     }
     printf("\n");
-    return 0;
 }
