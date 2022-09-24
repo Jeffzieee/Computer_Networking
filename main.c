@@ -1,32 +1,34 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include <unistd.h>
 
-int main(){
-    printf("Stop and Wait Protocol ");
-    int i=0,j=0,x,x1=10,x2,window_size;
-    printf("\nEnter the window size : ");
-    scanf("%d",&window_size);
+void main(){
+    int n,ws,x,i=1,k,z,flag;
+    int t[100] = {0};
 
-    while(window_size!=0){
-        printf("\nFrame %d transmission in progress...",i+1);
-        srand(x1++);
-        x=rand()%10;
-        if(x%2==0) {
-            for (x2 = 1; x2 < 2; x2++) {
-                printf("\nWaiting for %d seconds...",x2);
-                sleep(x2);
-                printf("\nNo Acknowledgement yet...");
+    printf("Window Size \n");
+    scanf("%d",&ws);
+    printf("Frames \n");
+    scanf("%d",&n);
+    srand(time(0));
+
+    while(i<=n){
+        z=0;
+        flag=1;
+        for(k=i;k<i+ws && k<=n;k++){
+            if(t[k]==1) {
+                if (flag == 1)
+                    z = z + 1;
+                continue;
             }
-            printf("\nFrame %d retransmission in progress...",j+1);
-            srand(x1++);
-            x=rand()%10;
+            x=rand()%2;
+            if(x==0){
+                printf("Frame %d");
+            }
+
+
+
         }
-        printf("\nFrame %d Acknowledgement received",i+1);
-        window_size-=1;
-        i++;
-        j++;
     }
-    printf("\n");
-    return 0;
 }
